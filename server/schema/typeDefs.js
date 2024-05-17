@@ -25,9 +25,9 @@ type Query {
 
 type Mutation {
     login(email:String!,password:String!):Auth
-    addUser(username:String!,email:String!,password:String!) :Auth
-    saveBook(authors: [String]!, description: String!, title: String!, bookId: String!, image: String!, link: String, userId: String): User
-        removeBook(bookId: String!, userId: String!): User
+    addUser(username: String!, email: String!, password: String!): Auth
+    saveBook(authors: [String]!, description: String!, title: String!, bookId: String!, image: String!, link: String, userId: String): Book
+    removeBook(bookId: String!, userId: String!): Book
 }
 `;
 

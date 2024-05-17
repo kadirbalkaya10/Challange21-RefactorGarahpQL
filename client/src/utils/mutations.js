@@ -26,7 +26,7 @@ export const LOGIN_USER = gql`
 
 // Define GraphQL mutation for adding a user
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
+  mutation Mutation($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
       token
       user {
@@ -34,14 +34,6 @@ export const ADD_USER = gql`
         bookCount
         email
         username
-        savedBooks {
-          authors
-          bookId
-          description
-          image
-          link
-          title
-        }
       }
     }
   }

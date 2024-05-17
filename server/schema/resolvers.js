@@ -41,15 +41,25 @@ const resolvers = {
 
     // Define 'addUser' resolver function
     addUser: async (parent, { username, email, password }) => {
-      // Log information about adding new user
-      console.log("adding new user!");
-      console.log(username, email, password);
-      // Create new user in database
-      const user = await User.create({ username, email, password });
-      // Generate JWT token for user
-      const token = signToken(user);
-      // Return token and user data
-      return { token, user };
+      console.log("Adding new user:", username, email);
+      try {
+        // Log information about adding new user
+
+        // Create new user in database
+        const user = await User.create({ username, email, password });
+
+        // Generate JWT token for user
+        const token = signToken(user);
+        console.log(user);
+        // Return token and user data
+        return { token, user };
+      } catch (error) {
+        // Log any errors that occur
+        console.error("Error adding user:", error);
+
+        // Throw an error to propagate it back to the client
+        throw new Error("Failed to add user");
+      }
     },
 
     // Define 'saveBook' resolver function
